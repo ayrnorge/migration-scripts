@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FROM_SOURCE="dropbox-1:/Minimeis delt"
+TO_SOURCE="google-1:/"
 FILE_DIRECTORY=/media/disk/minimeis
 
 
@@ -9,7 +9,7 @@ read userInput
 if [[ -n "$userInput" ]]
     LOG_FILE=/media/disk/upload-$userInput.log
     screen -dmS migration-up rclone --log-file $LOGFILE copy \
-        $FROM_SOURCE \
         $FILE_DIRECTORY \
+        $TO_SOURCE \
         -P
 fi
