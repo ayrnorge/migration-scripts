@@ -2,21 +2,19 @@
 
 TO_SOURCE="google-1:/"
 FILE_DIRECTORY=/media/disk/minimeis
-
+LOGFILE_PATH=/media/disk
 
 echo -n "name of this migration: "
 read userInput
 if [[ -n "$userInput" ]]; then
-    LOG_FILE=/media/disk/upload-$userInput.log
+    
+    COMMAND="rclone --log-file \"$LOGFILE_PATH/upload-$userInput.log\" -vv copy \
+            $FILE_DIRECTORY \
+            $TO_SOURCE \
+            -P"
     if [[ -n "$TEST_MODE" ]]; then
-        rclone --log-file "$LOGFILE" copy \
-            $FILE_DIRECTORY \
-            $TO_SOURCE \
-            -P
+        eval $COMMAND
     else
-        screen -dmS migration-up rclone --log-file $LOGFILE copy \
-            $FILE_DIRECTORY \
-            $TO_SOURCE \
-            -P
+        screen -dmS migration-up $COMMAND
     fi
 fi
