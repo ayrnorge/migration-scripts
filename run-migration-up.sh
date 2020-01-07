@@ -8,8 +8,8 @@ echo -n "name of this migration: "
 read userInput
 if [[ -n "$userInput" ]]
     LOG_FILE=/media/disk/upload-$userInput.log
-    screen -dmS migration-up rclone copy \
+    screen -dmS migration-up rclone --log-file $LOGFILE copy \
         $FROM_SOURCE \
         $FILE_DIRECTORY \
-        -P --log-file $LOGFILE
+        -P
 fi
