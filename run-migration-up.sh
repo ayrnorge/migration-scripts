@@ -1,8 +1,8 @@
 #!/bin/bash
-FILE_DIRECTORY=/media/disk/files/$1
+FILE_DIRECTORY=$1
 LOGFILE_PATH=/media/disk
 
-if [ -f "$FILE_DIRECTORY" ] && [ "$FILE_DIRECTORY" != "/media/disk/files/" ]; then
+if [ -f "$FILE_DIRECTORY" ]; then
     echo -n "config name: "
     read userInput
     if [[ -n "$userInput" ]]; then
