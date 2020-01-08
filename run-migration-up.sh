@@ -14,6 +14,6 @@ if [[ -n "$userInput" ]]; then
     if [[ -n "$TEST_MODE" ]]; then
         eval $COMMAND
     else
-        eval "screen -dmS migration-$userInput $COMMAND"
+        eval "screen -dmS up-$userInput $COMMAND"
     fi
 fi
