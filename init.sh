@@ -19,6 +19,8 @@ if [[ -n "$driveName" ]]; then
     sudo mount -o discard,defaults /dev/$driveName $FOLDER_NAME
     sudo chmod a+w $FOLDER_NAME
 
+    sudo mkdir $FOLDER_NAME/files
+
     echo "WARNING: This drive will not auto mount on reboot. Normally, we don't want to, since the servers should be short-lived."
 
     export PATH="$PATH:$PWD"
