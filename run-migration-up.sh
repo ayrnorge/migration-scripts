@@ -17,5 +17,5 @@ if [ -f "$FILE_DIRECTORY" ]; then
         fi
     fi
 else
-    echo "Folder not found! eg: run-migration-up fish"
+    echo "Folder not found! eg: run-migration-up fish. You said: $FILE_DIRECTORY"
 fi
