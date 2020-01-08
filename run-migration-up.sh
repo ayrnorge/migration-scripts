@@ -1,19 +1,21 @@
 #!/bin/bash
-
-TO_SOURCE="google-1:/"
-FILE_DIRECTORY=/media/disk/minimeis
+FILE_DIRECTORY=/media/disk/files/$1
 LOGFILE_PATH=/media/disk
 
-echo -n "name of this migration: "
-read userInput
-if [[ -n "$userInput" ]]; then
-    
-    COMMAND="rclone --log-file \"$LOGFILE_PATH/upload-$userInput.log\" -vv copy $FILE_DIRECTORY $TO_SOURCE -P"
-    echo "[Running Command]: $COMMAND
-    "
-    if [[ -n "$TEST_MODE" ]]; then
-        eval $COMMAND
-    else
-        eval "screen -dmS up-$userInput $COMMAND"
+if [ -f "$FILE_DIRECTORY" ] && [$FILE_DIRECTORY !== "/media/disk/files/" ]; then
+    echo -n "config name: "
+    read userInput
+    if [[ -n "$userInput" ]]; then
+        
+        COMMAND="rclone --log-file \"$LOGFILE_PATH/upload-$userInput.log\" -vv copy $FILE_DIRECTORY $userInput:/ -P"
+        echo "[Running Command]: $COMMAND
+        "
+        if [[ -n "$TEST_MODE" ]]; then
+            eval $COMMAND
+        else
+            eval "screen -dmS up-$userInput $COMMAND"
+        fi
     fi
+else
+    echo "Folder not found! eg: run-migration-up fish"
 fi

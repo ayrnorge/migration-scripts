@@ -21,8 +21,8 @@ if [[ -n "$driveName" ]]; then
 
     echo "WARNING: This drive will not auto mount on reboot. Normally, we don't want to, since the servers should be short-lived."
 
-    export PATH="$PATH/$PWD"
-    echo "PATH=\"\$PATH/$PWD\"" >> ~/.bashrc
+    export PATH="$PATH:$PWD"
+    echo "PATH=\"\$PATH:$PWD\"" >> ~/.bashrc
     
     echo "Installing rclone!";
     curl https://rclone.org/install.sh | sudo bash
