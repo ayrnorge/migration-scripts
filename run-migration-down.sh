@@ -7,7 +7,7 @@ LOGFILE_PATH=/media/disk
 echo -n "folder name: "
 read folderName
 if [[ -n "$folderName" ]]; then
-    SAFE_FOLDERNAME=$(echo $folderName | sed -r 's/([a-z0-9])([A-Z])/\1_\L\2/g')
+    SAFE_FOLDERNAME=$(echo $folderName | tr " " _)
     COMMAND="rclone --log-file \"$LOGFILE_PATH/upload-$SAFE_FOLDERNAME.log\" -vv copy \"$FROM_SOURCE/$folderName\" \"$FILE_DIRECTORY/$folderName\"  -P"
     echo "[Running Command]: $COMMAND
     "
