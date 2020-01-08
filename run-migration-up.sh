@@ -2,7 +2,7 @@
 FILE_DIRECTORY=/media/disk/files/$1
 LOGFILE_PATH=/media/disk
 
-if [ -f "$FILE_DIRECTORY" ] && [$FILE_DIRECTORY !== "/media/disk/files/" ]; then
+if [ -f "$FILE_DIRECTORY" ] && [ "$FILE_DIRECTORY" != "/media/disk/files/" ]; then
     echo -n "config name: "
     read userInput
     if [[ -n "$userInput" ]]; then
