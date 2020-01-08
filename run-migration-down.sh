@@ -9,7 +9,7 @@ read folderName
 if [[ -n "$folderName" ]]; then
     SAFE_FOLDERNAME=$(echo $folderName | tr " " _)
     mkdir $FILE_DIRECTORY/$SAFE_FOLDERNAME
-    COMMAND="rclone --log-file \"$LOGFILE_PATH/upload-$SAFE_FOLDERNAME.log\" -vv copy \"$FROM_SOURCE/$folderName\" \"$FILE_DIRECTORY/$SAFE_FOLDERNAME\"  -P"
+    COMMAND="rclone --log-file \"$LOGFILE_PATH/download-$SAFE_FOLDERNAME.log\" -vv copy \"$FROM_SOURCE/$folderName\" \"$FILE_DIRECTORY/$SAFE_FOLDERNAME\"  -P"
     echo "[Running Command]: $COMMAND
     "
     if [[ -n "$TEST_MODE" ]]; then
