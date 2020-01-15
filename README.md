@@ -1,1 +1,1 @@
-# minimeis-migration
+# grid-migration
