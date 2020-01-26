@@ -4,7 +4,7 @@ FROM_CONFIG=$1
 TO_CONFIG=$2
 LOGFILE_PATH=$PWD/logs
 
-if [[ !-d "$LOGFILE_PATH" ]]; then
+if [[ ! -d "$LOGFILE_PATH" ]]; then
     mkdir $LOGFILE_PATH
 fi
 
