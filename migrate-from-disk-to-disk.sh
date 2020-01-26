@@ -10,7 +10,7 @@ fi
 
 
 if [ -n "$FROM_CONFIG" ] || [ -n "$TO_CONFIG" ]; then
-    SAFE_LOGFILENAME=$(echo $FROM_CONFIG-$TO_CONFIG | tr " " _)
+    SAFE_LOGFILENAME=$(echo $FROM_CONFIG-$TO_CONFIG | tr " " _  | tr ":" _  | tr "/" _)
     COMMAND="rclone --log-file \"$LOGFILE_PATH/disk-to-disk-$SAFE_LOGFILENAME.log\" -vv copy \"$FROM_CONFIG\" \"$TO_CONFIG\" -P --drive-skip-gdocs"
     echo "[Running Command]: $COMMAND
     "
