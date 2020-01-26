@@ -9,7 +9,7 @@ if [[ ! -d "$LOGFILE_PATH" ]]; then
 fi
 
 
-if [[ -n "$FROM_CONFIG" ]] || [ -n "$TO_CONFIG" ]]; then
+if [ -n "$FROM_CONFIG" ] || [ -n "$TO_CONFIG" ]; then
     COMMAND="rclone --log-file \"$LOGFILE_PATH/disk-to-disk-$SAFE_FOLDERNAME.log\" -vv copy \"$FROM_CONFIG\" \"$TO_CONFIG\"  -P"
     echo "[Running Command]: $COMMAND
     "
@@ -18,4 +18,6 @@ if [[ -n "$FROM_CONFIG" ]] || [ -n "$TO_CONFIG" ]]; then
     else
         eval "screen -dmS up-$SAFE_FOLDERNAME $COMMAND"
     fi
+else
+    echo "Missing config: ./migrate-from-disk-to-disk <from-config> <to-config>"
 fi
